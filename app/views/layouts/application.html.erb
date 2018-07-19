@@ -3,12 +3,24 @@
   <head>
     <title>BlogApp</title>
     <%= csrf_meta_tags %>
-
+    <meta name="viewport" content="width=device-width">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <ul>
+        <li><a href="/">questionBlog</a></li>
+        <%= link_to "ブログ一覧", blogs_path %>
+      </ul>
+    </header>
+    
     <%= yield %>
+    
+    <footer>
+      <p>クエスチョンブログ</p>
+      <p>©2018 sakunizia️</p>
+    </footer>
   </body>
 </html>
