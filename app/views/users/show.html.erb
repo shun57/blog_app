@@ -1,3 +1,14 @@
 <h1><%= @user.name %>のページ</h1>
 
 <p>メールアドレス: <%= @user.email %></p>
+
+<h2>お気に入り一覧</h2>
+<div class="row">
+<% @favorites_blogs.each do |favorite_blog| %>
+  <div class="col-xs-12 col-md-6 blog-panel">
+    <h2>タイトル：<%= favorite_blog.title %></h2>
+    <p>本文：<%= favorite_blog.content %></p>
+    <p>投稿者名：<%= favorite_blog.user.name %></p>
+  </div>
+  <% end %>
+</div>
