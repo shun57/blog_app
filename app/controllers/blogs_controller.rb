@@ -4,6 +4,9 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.all
+    if logged_in?
+    @blog = current_user.id
+    end
   end
 
   def new
