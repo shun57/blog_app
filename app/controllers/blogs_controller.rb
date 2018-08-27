@@ -28,7 +28,7 @@ class BlogsController < ApplicationController
         format.json { render :show, status: :created, location: @blog }
       else
         format.html { render :new }
-       format.json { render json: @blog.errors, status: :unprocessable_entity }
+        format.json { render json: @blog.errors, status: :unprocessable_entity }
       end
     end
   end
