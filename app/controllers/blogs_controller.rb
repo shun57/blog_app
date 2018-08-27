@@ -20,10 +20,16 @@ class BlogsController < ApplicationController
   def create
     @blog = Blog.create(blog_params)
     @blog.user_id = current_user.id
-    if @blog.save
-      redirect_to blogs_path,notice:"ブログを作成しました！"
-    else
-      render 'new'
+
+    respond_to do |format|
+      if @blog.save
+        CompletionMailer.completion_mail(@blog).deliver
+        format.html{redirect_to blogs_path,notice:"ブログを作成しました！"}
+        format.json { render :show, status: :created, location: @blog }
+      else
+        format.html { render :new }
+       format.json { render json: @blog.errors, status: :unprocessable_entity }
+      end
     end
   end
 
